@@ -1,0 +1,6 @@
+// Policy with potential privilege escalation
+policy privilege_test {
+    allow action: execute resource: system role: guest;
+    allow action: admin resource: database role: user condition: "time < 5pm";
+    deny action: read resource: sensitive role: public;
+}

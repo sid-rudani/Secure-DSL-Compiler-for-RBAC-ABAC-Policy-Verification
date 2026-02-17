@@ -1,0 +1,68 @@
+policy hospital_access {
+    user dr_alice;
+    user patient_bob;
+    user nurse_carol;
+    
+    role doctor;
+    role patient;
+    role nurse;
+    role admin;
+    
+    resource patient_records;
+    resource prescriptions;
+    resource lab_results;
+    
+    action read;
+    action write;
+    action delete;
+    action approve;
+    
+    rule doctor_read_records {
+        effect: allow
+        subject: role doctor
+        action: read
+        resource: patient_records
+    }
+    
+    rule doctor_write_prescriptions {
+        effect: allow
+        subject: role doctor
+        action: write
+        resource: prescriptions
+    }
+    
+    rule nurse_read_records {
+        effect: allow
+        subject: role nurse
+        action: read
+        resource: patient_records
+    }
+    
+    rule nurse_cannot_delete {
+        effect: deny
+        subject: role nurse
+        action: delete
+        resource: patient_records
+    }
+    
+    rule patient_read_own_records {
+        effect: allow
+        subject: role patient
+        action: read
+        resource: patient_records
+    }
+    
+    rule patient_view_prescriptions {
+        effect: allow
+        subject: role patient
+        action: read
+        resource: prescriptions
+    }
+    
+    rule admin_full_access {
+        effect: allow
+        subject: role admin
+        action: approve
+        resource: lab_results
+    }
+}

@@ -1,0 +1,103 @@
+policy comprehensive_system {
+    user admin_user;
+    user content_creator;
+    user moderator;
+    user viewer;
+    
+    role superadmin;
+    role content_manager < superadmin;
+    role content_editor < content_manager;
+    role contributor < content_editor;
+    role viewer_role;
+    
+    resource articles;
+    resource comments;
+    resource user_profiles;
+    resource system_settings;
+    resource analytics;
+    
+    action create;
+    action read;
+    action update;
+    action delete;
+    action publish;
+    action moderate;
+    action configure;
+    
+    rule superadmin_full_access {
+        effect: allow
+        subject: role superadmin
+        action: configure
+        resource: system_settings
+    }
+    
+    rule superadmin_delete_any {
+        effect: allow
+        subject: role superadmin
+        action: delete
+        resource: articles
+    }
+    
+    rule content_manager_publish {
+        effect: allow
+        subject: role content_manager
+        action: publish
+        resource: articles
+    }
+    
+    rule content_editor_update {
+        effect: allow
+        subject: role content_editor
+        action: update
+        resource: articles
+    }
+    
+    rule contributor_create {
+        effect: allow
+        subject: role contributor
+        action: create
+        resource: articles
+    }
+    
+    rule contributor_cannot_delete {
+        effect: deny
+        subject: role contributor
+        action: delete
+        resource: articles
+    }
+    
+    rule viewer_read_only {
+        effect: allow
+        subject: role viewer_role
+        action: read
+        resource: articles
+    }
+    
+    rule viewer_cannot_modify {
+        effect: deny
+        subject: role viewer_role
+        action: update
+        resource: articles
+    }
+    
+    rule moderator_moderate_comments {
+        effect: allow
+        subject: role content_manager
+        action: moderate
+        resource: comments
+    }
+    
+    rule profile_viewing {
+        effect: allow
+        subject: role viewer_role
+        action: read
+        resource: user_profiles
+    }
+    
+    rule analytics_access {
+        effect: allow
+        subject: role superadmin
+        action: read
+        resource: analytics
+    }
+}
