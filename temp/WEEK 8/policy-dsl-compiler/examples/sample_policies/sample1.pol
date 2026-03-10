@@ -1,0 +1,10 @@
+// Sample Policy 1: E-commerce Access Control
+policy ecommerce_access {
+    allow action: read resource: catalog role: customer;
+    allow action: write resource: cart role: customer;
+    allow action: read resource: orders role: customer condition: "owner == user.id";
+    allow action: write resource: order role: customer;
+    allow action: read resource: orders role: admin;
+    allow action: write resource: orders role: admin;
+    deny action: delete resource: customer role: customer;
+}

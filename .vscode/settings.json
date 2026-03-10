@@ -1,3 +1,4 @@
 {
-    "cmake.sourceDirectory": "/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler"
+    "cmake.sourceDirectory": "/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler",
+    "C_Cpp.default.compilerPath": "/usr/bin/g++"
 }

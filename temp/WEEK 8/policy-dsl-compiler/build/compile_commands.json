@@ -1,0 +1,98 @@
+[
+{
+  "directory": "/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/build",
+  "command": "/usr/bin/clang++  -I\"/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/include\" -g -std=gnu++17 -arch arm64 -o CMakeFiles/compiler.dir/src/analyzer/ConflictDetector.cpp.o -c \"/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/src/analyzer/ConflictDetector.cpp\"",
+  "file": "/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/src/analyzer/ConflictDetector.cpp",
+  "output": "CMakeFiles/compiler.dir/src/analyzer/ConflictDetector.cpp.o"
+},
+{
+  "directory": "/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/build",
+  "command": "/usr/bin/clang++  -I\"/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/include\" -g -std=gnu++17 -arch arm64 -o CMakeFiles/compiler.dir/src/analyzer/PrivilegeEscalation.cpp.o -c \"/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/src/analyzer/PrivilegeEscalation.cpp\"",
+  "file": "/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/src/analyzer/PrivilegeEscalation.cpp",
+  "output": "CMakeFiles/compiler.dir/src/analyzer/PrivilegeEscalation.cpp.o"
+},
+{
+  "directory": "/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/build",
+  "command": "/usr/bin/clang++  -I\"/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/include\" -g -std=gnu++17 -arch arm64 -o CMakeFiles/compiler.dir/src/analyzer/RedundancyDetector.cpp.o -c \"/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/src/analyzer/RedundancyDetector.cpp\"",
+  "file": "/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/src/analyzer/RedundancyDetector.cpp",
+  "output": "CMakeFiles/compiler.dir/src/analyzer/RedundancyDetector.cpp.o"
+},
+{
+  "directory": "/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/build",
+  "command": "/usr/bin/clang++  -I\"/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/include\" -g -std=gnu++17 -arch arm64 -o CMakeFiles/compiler.dir/src/codegen/AccessMatrix.cpp.o -c \"/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/src/codegen/AccessMatrix.cpp\"",
+  "file": "/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/src/codegen/AccessMatrix.cpp",
+  "output": "CMakeFiles/compiler.dir/src/codegen/AccessMatrix.cpp.o"
+},
+{
+  "directory": "/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/build",
+  "command": "/usr/bin/clang++  -I\"/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/include\" -g -std=gnu++17 -arch arm64 -o CMakeFiles/compiler.dir/src/codegen/MatrixGenerator.cpp.o -c \"/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/src/codegen/MatrixGenerator.cpp\"",
+  "file": "/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/src/codegen/MatrixGenerator.cpp",
+  "output": "CMakeFiles/compiler.dir/src/codegen/MatrixGenerator.cpp.o"
+},
+{
+  "directory": "/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/build",
+  "command": "/usr/bin/clang++  -I\"/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/include\" -g -std=gnu++17 -arch arm64 -o CMakeFiles/compiler.dir/src/lexer/Lexer.cpp.o -c \"/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/src/lexer/Lexer.cpp\"",
+  "file": "/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/src/lexer/Lexer.cpp",
+  "output": "CMakeFiles/compiler.dir/src/lexer/Lexer.cpp.o"
+},
+{
+  "directory": "/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/build",
+  "command": "/usr/bin/clang++  -I\"/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/include\" -g -std=gnu++17 -arch arm64 -o CMakeFiles/compiler.dir/src/lexer/Token.cpp.o -c \"/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/src/lexer/Token.cpp\"",
+  "file": "/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/src/lexer/Token.cpp",
+  "output": "CMakeFiles/compiler.dir/src/lexer/Token.cpp.o"
+},
+{
+  "directory": "/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/build",
+  "command": "/usr/bin/clang++  -I\"/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/include\" -g -std=gnu++17 -arch arm64 -o CMakeFiles/compiler.dir/src/lexer/TokenType.cpp.o -c \"/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/src/lexer/TokenType.cpp\"",
+  "file": "/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/src/lexer/TokenType.cpp",
+  "output": "CMakeFiles/compiler.dir/src/lexer/TokenType.cpp.o"
+},
+{
+  "directory": "/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/build",
+  "command": "/usr/bin/clang++  -I\"/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/include\" -g -std=gnu++17 -arch arm64 -o CMakeFiles/compiler.dir/src/main.cpp.o -c \"/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/src/main.cpp\"",
+  "file": "/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/src/main.cpp",
+  "output": "CMakeFiles/compiler.dir/src/main.cpp.o"
+},
+{
+  "directory": "/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/build",
+  "command": "/usr/bin/clang++  -I\"/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/include\" -g -std=gnu++17 -arch arm64 -o CMakeFiles/compiler.dir/src/parser/AST.cpp.o -c \"/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/src/parser/AST.cpp\"",
+  "file": "/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/src/parser/AST.cpp",
+  "output": "CMakeFiles/compiler.dir/src/parser/AST.cpp.o"
+},
+{
+  "directory": "/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/build",
+  "command": "/usr/bin/clang++  -I\"/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/include\" -g -std=gnu++17 -arch arm64 -o CMakeFiles/compiler.dir/src/parser/Parser.cpp.o -c \"/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/src/parser/Parser.cpp\"",
+  "file": "/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/src/parser/Parser.cpp",
+  "output": "CMakeFiles/compiler.dir/src/parser/Parser.cpp.o"
+},
+{
+  "directory": "/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/build",
+  "command": "/usr/bin/clang++  -I\"/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/include\" -g -std=gnu++17 -arch arm64 -o CMakeFiles/compiler.dir/src/semantic/SemanticAnalyzer.cpp.o -c \"/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/src/semantic/SemanticAnalyzer.cpp\"",
+  "file": "/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/src/semantic/SemanticAnalyzer.cpp",
+  "output": "CMakeFiles/compiler.dir/src/semantic/SemanticAnalyzer.cpp.o"
+},
+{
+  "directory": "/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/build",
+  "command": "/usr/bin/clang++  -I\"/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/include\" -g -std=gnu++17 -arch arm64 -o CMakeFiles/compiler.dir/src/semantic/SymbolTable.cpp.o -c \"/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/src/semantic/SymbolTable.cpp\"",
+  "file": "/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/src/semantic/SymbolTable.cpp",
+  "output": "CMakeFiles/compiler.dir/src/semantic/SymbolTable.cpp.o"
+},
+{
+  "directory": "/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/build",
+  "command": "/usr/bin/clang++  -I\"/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/include\" -g -std=gnu++17 -arch arm64 -o CMakeFiles/compiler.dir/src/semantic/TypeChecker.cpp.o -c \"/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/src/semantic/TypeChecker.cpp\"",
+  "file": "/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/src/semantic/TypeChecker.cpp",
+  "output": "CMakeFiles/compiler.dir/src/semantic/TypeChecker.cpp.o"
+},
+{
+  "directory": "/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/build",
+  "command": "/usr/bin/clang++  -I\"/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/include\" -g -std=gnu++17 -arch arm64 -o CMakeFiles/compiler.dir/src/utils/Error.cpp.o -c \"/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/src/utils/Error.cpp\"",
+  "file": "/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/src/utils/Error.cpp",
+  "output": "CMakeFiles/compiler.dir/src/utils/Error.cpp.o"
+},
+{
+  "directory": "/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/build",
+  "command": "/usr/bin/clang++  -I\"/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/include\" -g -std=gnu++17 -arch arm64 -o CMakeFiles/compiler.dir/src/utils/JsonOutput.cpp.o -c \"/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/src/utils/JsonOutput.cpp\"",
+  "file": "/Users/siddharth_rudani/Desktop/NITW/SEM - 4/CD/LAB/IMPLEMENTATION/policy-dsl-compiler/src/utils/JsonOutput.cpp",
+  "output": "CMakeFiles/compiler.dir/src/utils/JsonOutput.cpp.o"
+}
+]
