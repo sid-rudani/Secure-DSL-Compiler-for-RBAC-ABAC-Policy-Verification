@@ -1,6 +1,0 @@
-// Policy with conflicting statements
-policy conflict_test {
-    allow action: write resource: document role: user;
-    deny action: write resource: document role: user;
-    allow action: delete resource: document role: admin;
-}

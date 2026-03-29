@@ -1,7 +1,0 @@
-// Basic RBAC Policy
-policy basic_rbac {
-    allow action: read resource: file role: user;
-    allow action: write resource: file role: editor;
-    allow action: delete resource: file role: admin;
-    deny action: delete resource: system role: user;
-}
