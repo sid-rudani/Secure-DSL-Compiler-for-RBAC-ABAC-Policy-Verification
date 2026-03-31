@@ -1,0 +1,159 @@
+// Healthcare Records System Access Control
+policy healthcare_records {
+
+    // Users
+    user doctor_alice;
+    user nurse_bob;
+    user receptionist_carol;
+    user billing_dave;
+    user auditor_eve;
+
+    // Roles
+    role doctor;
+    role nurse;
+    role receptionist;
+    role billing_agent;
+    role auditor;
+    role records_admin;
+
+    // Resources
+    resource patient_record;
+    resource prescription;
+    resource billing_info;
+    resource audit_log;
+    resource system_config;
+    resource role_assignment;
+
+    // Actions
+    action create;
+    action read;
+    action update;
+    action delete;
+    action approve;
+    action export;
+    action assign_role;
+
+    // Attributes
+    attribute doctor.license_status: string;
+    attribute patient_record.sensitivity: string;
+    attribute billing_info.amount: int;
+
+    // ── Doctor permissions ──────────────────────────────
+    rule doctor_manage_prescriptions {
+        effect: allow
+        subject: role doctor
+        action: create
+        resource: prescription
+    }
+
+    rule doctor_read_records {
+        effect: allow
+        subject: role doctor
+        action: read
+        resource: patient_record
+    }
+
+    rule doctor_update_records {
+        effect: allow
+        subject: role doctor
+        action: update
+        resource: patient_record
+    }
+
+    // ESCALATION PATH A — GAP:
+    // No rule prevents doctors from updating audit_log.
+    // A doctor can tamper with audit trails to erase access history.
+
+    // ── Nurse permissions ───────────────────────────────
+    rule nurse_read_records {
+        effect: allow
+        subject: role nurse
+        action: read
+        resource: patient_record
+    }
+
+    rule nurse_update_prescriptions {
+        effect: allow
+        subject: role nurse
+        action: update
+        resource: prescription
+    }
+
+    // ESCALATION PATH B — MISSING SCOPE RESTRICTION:
+    // Nurses can update ANY prescription, not just those for their assigned patients.
+    // A nurse can escalate drug quantities or forge prescriptions for any patient.
+
+    // ── Receptionist permissions ────────────────────────
+    rule receptionist_create_records {
+        effect: allow
+        subject: role receptionist
+        action: create
+        resource: patient_record
+    }
+
+    rule receptionist_read_billing {
+        effect: allow
+        subject: role billing_agent
+        action: read
+        resource: billing_info
+    }
+
+    // ESCALATION PATH C — CONFUSED SUBJECT:
+    // receptionist_read_billing grants billing_agent role, not receptionist.
+    // The rule name implies it protects receptionists, but actually widens
+    // billing_agent access silently. Anyone auditing by rule name is misled.
+
+    // ── Billing agent permissions ───────────────────────
+    rule billing_read_records {
+        effect: allow
+        subject: role billing_agent
+        action: read
+        resource: patient_record
+    }
+
+    rule billing_export_data {
+        effect: allow
+        subject: role billing_agent
+        action: export
+        resource: billing_info
+    }
+
+    // ESCALATION PATH D — ROLE ASSIGNMENT UNGATED:
+    // billing_agent can export billing_info, but no rule restricts
+    // export of patient_record. Combined with billing_read_records,
+    // a billing agent can read and then export full patient records.
+
+    // ── Auditor permissions ─────────────────────────────
+    rule auditor_read_logs {
+        effect: allow
+        subject: role auditor
+        action: read
+        resource: audit_log
+    }
+
+    rule auditor_read_configs {
+        effect: allow
+        subject: role auditor
+        action: read
+        resource: system_config
+    }
+
+    // ── Records admin permissions ───────────────────────
+    rule admin_assign_roles {
+        effect: allow
+        subject: role records_admin
+        action: assign_role
+        resource: role_assignment
+    }
+
+    // ESCALATION PATH E — UNCHECKED ROLE ASSIGNMENT:
+    // records_admin can assign ANY role with no constraint on target role.
+    // A compromised records_admin (or a receptionist socially engineering
+    // one) can self-assign the records_admin role or escalate any user to
+    // any role, including doctor or auditor, with zero audit requirement.
+
+    // ── Missing blanket denies ──────────────────────────
+    // No default-deny rule exists. Any unspecified action/resource
+    // combination is implicitly permitted in many policy engines.
+    // A nurse attempting delete on patient_record hits no deny rule.
+}

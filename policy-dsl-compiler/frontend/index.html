@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Policy DSL Studio</title>
+    <!-- CodeMirror -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/theme/dracula.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/clike/clike.min.js"></script>
+    
+    <!-- Vis Network -->
+    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="panel">
+            <div class="logo">
+                <span class="icon">⚙️</span>
+                <h1>Policy DSL Studio</h1>
+            </div>
+            <div class="controls">
+                <button id="btn-compile" class="btn btn-primary">Compile & Analyze</button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-layout">
+            <!-- Left Pane: Editor / Builder -->
+            <div class="pane left-pane panel">
+                <div class="tabs-container">
+                    <button class="tab-btn active" data-tab="code">Code Editor</button>
+                    <button class="tab-btn" data-tab="nocode">No-Code Builder</button>
+                    <div class="dropdown-wrap">
+                        <select id="sample-select">
+                            <option value="">Choose Sample...</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="tab-content active" id="content-code">
+                    <textarea id="code-editor"></textarea>
+                </div>
+
+                <div class="tab-content builder-content" id="content-nocode">
+                    <div class="builder-group">
+                        <div class="group-header">
+                            <h3>Policy Identity</h3>
+                        </div>
+                        <div class="builder-item" style="background: transparent; border: none; padding: 0;">
+                            <input type="text" id="builder-policy-name" placeholder="ecommerce_access" value="my_policy" style="width: 100%">
+                        </div>
+                    </div>
+                    
+                    <div class="builder-group">
+                        <div class="group-header">
+                            <h3>Users</h3>
+                            <button class="btn btn-secondary btn-icon btn-add" data-target="users-list">+</button>
+                        </div>
+                        <div id="users-list" class="item-list"></div>
+                    </div>
+
+                    <div class="builder-group">
+                        <div class="group-header">
+                            <h3>Roles & Inheritance</h3>
+                            <button class="btn btn-secondary btn-icon btn-add" data-target="roles-list">+</button>
+                        </div>
+                        <div id="roles-list" class="item-list"></div>
+                    </div>
+
+                    <div class="builder-group">
+                        <div class="group-header">
+                            <h3>Resources</h3>
+                            <button class="btn btn-secondary btn-icon btn-add" data-target="resources-list">+</button>
+                        </div>
+                        <div id="resources-list" class="item-list"></div>
+                    </div>
+
+                    <div class="builder-group">
+                        <div class="group-header">
+                            <h3>Actions</h3>
+                            <button class="btn btn-secondary btn-icon btn-add" data-target="actions-list">+</button>
+                        </div>
+                        <div id="actions-list" class="item-list"></div>
+                    </div>
+
+                    <div class="builder-group">
+                        <div class="group-header">
+                            <h3>Policy Rules</h3>
+                            <button class="btn btn-secondary btn-icon btn-add" data-target="rules-list">+</button>
+                        </div>
+                        <div id="rules-list" class="item-list"></div>
+                    </div>
+                    
+                    <button id="btn-generate" class="btn btn-primary" style="margin-top: 1rem; padding: 1rem">Generate Policy Code</button>
+                </div>
+            </div>
+
+            <!-- Right Pane: Outputs / Graph -->
+            <div class="pane right-pane panel">
+                <div class="tabs-container">
+                    <button class="tab-btn active" data-tab="output">Analysis Output</button>
+                    <button class="tab-btn" data-tab="matrix">Access Matrix</button>
+                    <button class="tab-btn" data-tab="graph">Visual Graph</button>
+                    <button class="tab-btn" data-tab="json">JSON Output</button>
+                </div>
+
+                <!-- Output Tab -->
+                <div class="tab-content active" id="content-output">
+                    <div id="compiler-status" class="status-banner status-neutral">Waiting for compilation...</div>
+                    
+                    <div class="analysis-dashboard">
+                        <div class="insight-card" id="section-errors">
+                            <div class="insight-header">
+                                <h3>Errors & Warnings</h3>
+                                <div class="badge count-0">0</div>
+                            </div>
+                            <div class="insight-content">No issues found.</div>
+                        </div>
+                        
+                        <div class="insight-card" id="section-conflicts">
+                            <div class="insight-header">
+                                <h3>Conflicts</h3>
+                                <div class="badge count-0">0</div>
+                            </div>
+                            <div class="insight-content">No conflicts detected.</div>
+                        </div>
+                        
+                        <div class="insight-card" id="section-priv-esc">
+                            <div class="insight-header">
+                                <h3>Privilege Escalations</h3>
+                                <div class="badge count-0">0</div>
+                            </div>
+                            <div class="insight-content">No privilege escalations detected.</div>
+                        </div>
+                        
+                        <div class="insight-card" id="section-redundancies">
+                            <div class="insight-header">
+                                <h3>Redundancies</h3>
+                                <div class="badge count-0">0</div>
+                            </div>
+                            <div class="insight-content">No redundant rules detected.</div>
+                        </div>
+                        
+                        <div class="insight-card" id="section-raw">
+                            <div class="insight-header">
+                                <h3>Raw Diagnostic Output</h3>
+                            </div>
+                            <div class="insight-content">Run compilation to see output.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Matrix Tab -->
+                <div class="tab-content" id="content-matrix">
+                    <div class="matrix-view" id="matrix-display">Run compilation to generate matrix.</div>
+                </div>
+
+                <!-- Graph Tab -->
+                <div class="tab-content" id="content-graph" style="position: relative">
+                    <div id="graph-container"></div>
+                    <div class="graph-legend">
+                        <div class="legend-item"><div class="color-dot" style="background:#fca5a5"></div>User</div>
+                        <div class="legend-item"><div class="color-dot" style="background:#93c5fd"></div>Role</div>
+                        <div class="legend-item"><div class="color-dot" style="background:#86efac"></div>Resource</div>
+                        <div class="legend-item"><div class="color-dot" style="background:#10b981; border-radius: 2px"></div>Allow Rule</div>
+                        <div class="legend-item"><div class="color-dot" style="background:#ef4444; border-radius: 2px"></div>Deny Rule</div>
+                    </div>
+                </div>
+
+                <!-- JSON Tab -->
+                <div class="tab-content" id="content-json">
+                    <div class="matrix-view" id="json-display" style="white-space: pre-wrap; word-wrap: break-word; color: var(--text-primary);">Run compilation to generate JSON.</div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Templates for No-Code Builder -->
+    <template id="tpl-user">
+        <div class="builder-item">
+            <input type="text" class="item-name" placeholder="User Name">
+            <button class="btn-remove">×</button>
+        </div>
+    </template>
+    <template id="tpl-role">
+        <div class="builder-item">
+            <input type="text" class="item-name" placeholder="Role Name">
+            <input type="text" class="item-parent" placeholder="InheritsFrom (Optional)">
+            <button class="btn-remove">×</button>
+        </div>
+    </template>
+    <template id="tpl-resource">
+        <div class="builder-item">
+            <input type="text" class="item-name" placeholder="Resource Name">
+            <button class="btn-remove">×</button>
+        </div>
+    </template>
+    <template id="tpl-action">
+        <div class="builder-item">
+            <input type="text" class="item-name" placeholder="Action Name">
+            <button class="btn-remove">×</button>
+        </div>
+    </template>
+    <template id="tpl-rule">
+        <div class="builder-item rule-builder-item">
+            <div class="rule-row">
+                <input type="text" class="rule-name" placeholder="Rule Name (e.g. viewer_read)">
+                <select class="rule-effect" style="width: auto; flex: 0.5;">
+                    <option value="allow">Allow</option>
+                    <option value="deny">Deny</option>
+                </select>
+                <button class="btn-remove">×</button>
+            </div>
+            <div class="rule-row">
+                <input type="text" class="rule-subject" placeholder="Role (e.g. viewer)">
+                <input type="text" class="rule-action" placeholder="Action (e.g. read)">
+                <input type="text" class="rule-resource" placeholder="Resource (e.g. articles)">
+            </div>
+            <div class="rule-row">
+                <input type="text" class="rule-condition" placeholder="Condition String (Optional)">
+            </div>
+        </div>
+    </template>
+
+    <script src="app.js"></script>
+</body>
+</html>

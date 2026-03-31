@@ -56,10 +56,10 @@ Token Lexer::scanToken() {
         case '/':
             if (match('/')) {
                 skipSingleLineComment();
-                return scanToken(); // Continue scanning
+                return Token(TokenType::INVALID, "", currentLocation());
             } else if (match('*')) {
                 skipMultiLineComment();
-                return scanToken();
+                return Token(TokenType::INVALID, "", currentLocation());
             }
             throw LexicalError("Unexpected character '/'", currentLocation());
         
@@ -159,6 +159,11 @@ void Lexer::skipWhitespace() {
 
 void Lexer::skipSingleLineComment() {
     while (!isAtEnd() && peek() != '\n') {
+        advance();
+    }
+    if (!isAtEnd()) {
+        line_++;
+        column_ = 0;
         advance();
     }
 }

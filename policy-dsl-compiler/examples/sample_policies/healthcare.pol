@@ -1,6 +1,4 @@
-// Healthcare Data Access Control
 policy healthcare_access {
-    // Declarations
     user dr_alice;
     user patient_bob;
     user nurse_carol;
@@ -18,11 +16,8 @@ policy healthcare_access {
     action write;
     action delete;
     action approve;
-    
     attribute department.name: string;
     attribute clearance.level: int;
-    
-    // Doctor rules
     rule doctor_read_records {
         effect: allow
         subject: role doctor
@@ -37,7 +32,6 @@ policy healthcare_access {
         resource: prescriptions
     }
     
-    // Nurse rules
     rule nurse_read_records {
         effect: allow
         subject: role nurse
@@ -51,8 +45,6 @@ policy healthcare_access {
         action: delete
         resource: patient_records
     }
-    
-    // Patient rules
     rule patient_read_own_records {
         effect: allow
         subject: role patient
@@ -66,8 +58,6 @@ policy healthcare_access {
         action: read
         resource: prescriptions
     }
-    
-    // Admin rules
     rule admin_full_access {
         effect: allow
         subject: role admin

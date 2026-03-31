@@ -36,7 +36,9 @@ policy ecommerce {
         action: update
         resource: inventory
     }
+
     
+
     rule seller_view_orders {
         effect: allow
         subject: role seller
